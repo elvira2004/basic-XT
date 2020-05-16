@@ -1,0 +1,59 @@
+重定向标准输入输出
+
+重定向一般透過在命令间插入特定的符号来实现。特别的，这些符号的语法如下所示:
+
+command1 >file1
+上面这个命令执行command1然后将输出的内容存入file1.注意任何file1内的已经存在的内容将被新内容替代。如果要将新内容添加在文件末尾，请使用>>操作符。
+
+command1 <file1
+执行command1，使用file1作为用来替代键盘的输入源。
+
+command1  <infile > outfile
+同时替换输入和输出，执行command1，从文件infile读取内容，然后将输出写入到outfile中。
+
+
+
+
+
+
+
+你可以使用 cat 命令查看文件内容：
+
+$ cat users
+_mbsetupuser console  Oct 31 17:35 
+tianqixin    console  Oct 31 17:35 
+tianqixin    ttys000  Dec  1 11:33 
+输出重定向会覆盖文件内容，请看下面的例子：
+
+$ echo "菜鸟教程：www.runoob.com" > users
+$ cat users
+菜鸟教程：www.runoob.com
+$
+如果不希望文件内容被覆盖，可以使用 >> 追加到文件末尾，例如：
+
+$ echo "菜鸟教程：www.runoob.com" >> users
+$ cat users
+菜鸟教程：www.runoob.com
+菜鸟教程：www.runoob.com
+$
+
+
+
+
+
+
+
+接着以上实例，我们需要统计 users 文件的行数,执行以下命令：
+
+$ wc -l users
+       2 users
+也可以将输入重定向到 users 文件：
+
+$  wc -l < users
+       2 
+注意：上面两个例子的结果不同：第一个例子，会输出文件名；第二个不会，因为它仅仅知道从标准输入读取内容。
+
+command1 < infile > outfile
+
+
+
